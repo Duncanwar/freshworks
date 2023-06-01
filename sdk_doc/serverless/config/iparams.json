@@ -1,0 +1,21 @@
+{
+    "apiUrl": {
+        "display_name": "api Url",
+        "description": "Please enter your api url",
+        "type": "url",
+        "type_attributes": {
+          "product": "freshdesk"
+        },
+        "required": true
+      },
+      "apiKey": {
+        "display_name": "API Key",
+        "description": "Please enter your api_key",
+        "type": "api_key",
+        "secure": true,
+        "required": true,
+        "type_attributes": {
+          "product": "freshdesk"
+        }
+      }
+}
