@@ -6,7 +6,7 @@ exports = {
       const {iparams,data} =payload
       const response = await ticketInfo(iparams,data.ticket.id)
       let ticket = await JSON.parse(response.response);
-console
+        
       if(ticket.status === 5 && data.ticket.status === 2){
         await updateTicket(iparams,data.ticket)
         await addNote(iparams,ticket.id)
@@ -19,7 +19,6 @@ console
       console.log("Error occured",error);
     }
   }
-
 };
 
 async function ticketInfo(iparams,id){

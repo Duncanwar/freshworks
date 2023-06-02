@@ -1,0 +1,29 @@
+{
+  "domain_url": {
+    "display_name": "domain_url",
+    "description": "Please enter your domain_url",
+    "type": "text",
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    },
+    "events": [
+      {
+        "change":"domainUrlChange"
+      }
+    ]
+  },
+  "api_key": {
+    "display_name": "API Key",
+    "description": "Please enter your api_key",
+    "type": "api_key",
+    "secure": true,
+    "required": true,
+    "type_attributes": {
+      "product": "freshdesk"
+    },
+    "events": [{
+      "change":"apiKeyChange"
+    }]
+  }
+}
