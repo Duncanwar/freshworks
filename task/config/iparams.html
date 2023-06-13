@@ -56,6 +56,7 @@
           size="30"
           placeholder="subdomain.freshservice.com"
           class="fs-domain"
+          
 \        ></fw-input>
       </section>
     </main>
@@ -91,20 +92,20 @@
         const URL = `https://${domain.value}/api/v2/tickets`;
         const fs_URL = `https://${fs_domain.value}/api/v2/tickets`;
         console.log(fs_URL,URL, "hello");
-        const base64Encoded = btoa(apiKey.value);
-        const fs_base64Encoded = btoa(fs_apiKey.value)
-        let options = {
-          headers: {
-            Authorization: `Basic ${base64Encoded}`,
-            "Content-Type": "application/json"
-          }
-        };
-        let fs_options = {
-          headers: {
-            Authorization: `Basic ${fs_base64Encoded}`,
-            "Content-Type": "application/json"
-          }
-        };
+          const base64Encoded = btoa(apiKey.value);
+          const fs_base64Encoded = btoa(fs_apiKey.value)
+          let options = {
+            headers: {
+              Authorization: `Basic ${base64Encoded}`,
+              "Content-Type": "application/json"
+            }
+          };
+          let fs_options = {
+            headers: {
+              Authorization: `Basic ${fs_base64Encoded}`,
+              "Content-Type": "application/json"
+            }
+          };
         try {
           let { status } = await client.request.get(URL, options);
           let { status:fs_status } = await client.request.get(fs_URL, fs_options);
