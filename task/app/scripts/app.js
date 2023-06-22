@@ -33,9 +33,9 @@ async function renderText() {
   const conversations = tickets.conversations;
   const theLatestConversation = conversations[conversations.length - 1];
   retrieveDataValue = theLatestConversation;
-  const textArea = document.getElementById('text_area');
-  console.log(textArea)
-  textArea.innerHTML = retrieveDataValue.body_text
+  // const textArea = document.getElementsByTagName('textarea');
+  // console.log(textArea)
+  // textArea.innerHTMLz = retrieveDataValue.body_text
   console.log(retrieveDataValue)
   // Get the modal
   var modal = document.getElementById("myModal");
@@ -54,17 +54,19 @@ async function renderText() {
   let modalContent = document.getElementsByClassName("modal-content")[0];
   // When the user clicks the button, open the modal
   btn.onclick = async function () {
-    try {
-      // app.js
-      await client.interface.trigger("showModal", {
-          title: "Sample Modal",
+    modal.style.display = "block";
+
+//     try {
+//       // app.js
+//       await client.interface.trigger("showModal", {
+//           title: "Sample Modal",
  
-template: "modal.html",data:{title: "Sample Modal", conversation:retrieveDataValue }
-      });
-  } catch (error) {
-      // failure operation
-      console.error(error);
-  }
+// template: "modal.html",data:{title: "Sample Modal", conversation:retrieveDataValue }
+//       });
+//   } catch (error) {
+//       // failure operation
+//       console.error(error);
+//   }
     
     let textarea = document.createElement("textarea");
     let button = document.createElement("button");

@@ -13,42 +13,37 @@ exports = {
 };
 
 async function createTicket(iparams, data) {
-  const base64Encoded = btoa(iparams.api_key);
-  const fs_base64Encoded = btoa(iparams.fs_apiKey);
 
   try {
-    const fd_ticket = await $request.post(
-      `https://${iparams.domain_url}/api/v2/tickets`,
-      {
-        headers: {
-          Authorization: `Basic ${base64Encoded}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data.ticket),
-      }
-    );
+    const base64Encoded = btoa(iparams.api_key);
+    const fs_encoded = btoa(iparams.fs_apiKey);
 
-    const freshdesk_ticket_id = JSON.parse(fd_ticket.response).id;
-
+    const {description,subject,email,priority,status,cc_emails,id,phone} = data.ticket;
     const fs_ticket = await $request.post(
       `https://${iparams.fs_domain_url}/api/v2/tickets`,
       {
         headers: {
-          Authorization: `Basic ${fs_base64Encoded}`,
+          Authorization: `Basic ${fs_encoded}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...data.ticket,
+          description:description,
+          subject:subject,
+          email:email,
+          priority:priority,
+          status:status,
+          phone:phone,
+          requester_id:23000214863,
+          cc_emails:cc_emails,
           custom_fields: {
-            freshdesk_ticket_id: freshdesk_ticket_id.toString(),
+            freshdesk_ticket_id: id.toString(),
           },
         }),
       }
     );
-
     const freshservice_ticket_id = JSON.parse(fs_ticket.response).ticket.id;
     await $request.put(
-      `https://${iparams.domain_url}/api/v2/tickets/${freshdesk_ticket_id}`,
+      `https://${iparams.domain_url}/api/v2/tickets/${data.ticket.id}`,
       {
         headers: {
           Authorization: `Basic ${base64Encoded}`,
@@ -61,7 +56,6 @@ async function createTicket(iparams, data) {
         }),
       }
     );
-    console.log("success");
   } catch (error) {
     console.log(error);
   }

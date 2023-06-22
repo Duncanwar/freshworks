@@ -14,11 +14,17 @@
   </head>
   <body>
     <main>
-      <h3>
-        Configuration page built using
-        <code>iparams.html</code>
-      </h3>
-
+      <section class="date-domain">
+        <fw-input
+          required="true"
+          type="text"
+          icon-left="items"
+          label="Freshdesk domain"
+          size="30"
+          placeholder="subdomain.freshdesk.com"
+          class="fd-domain"
+        ></fw-input>
+      </section>
       <fw-input
         label="Freshdesk API Key"
         icon-right="magic-wand"
@@ -28,29 +34,7 @@
         size="30"
         class="fd-secure-field"
       ></fw-input>
-
-      <section class="date-domain">
-        <fw-input
-          required="true"
-          type="text"
-          icon-left="items"
-          label="domain"
-          size="30"
-          placeholder="subdomain.freshdesk.com"
-          class="fd-domain"
-        ></fw-input>
-      </section>
-          <h3>Fresh Service iparams</h3>
-      <fw-input
-        label="Freshservice API Key"
-        icon-right="magic-wand"
-        placeholder="Freshservice Portal > Profile > Copy API Key"
-        required="true"
-        minlength="5"
-        size="30"
-        class="fs-secure-field"
-      ></fw-input>
-
+      
       <section class="date-domain">
         <fw-input
           required="true"
@@ -62,6 +46,16 @@
           class="fs-domain"
         ></fw-input>
       </section>
+      <fw-input
+        label="Freshservice API Key"
+        icon-right="magic-wand"
+        placeholder="Freshservice Portal > Profile > Copy API Key"
+        required="true"
+        minlength="5"
+        size="30"
+        class="fs-secure-field"
+      ></fw-input>
+
     </main>
 
     <script src="./assets/iparams.js"></script>
